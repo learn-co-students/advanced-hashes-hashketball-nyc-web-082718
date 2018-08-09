@@ -109,7 +109,7 @@ def game_hash
           rebounds: 12,
           assists: 12,
           steals: 22,
-          blocks: 15,
+          blocks: 5,
           slam_dunks: 12
         }
       }
@@ -193,4 +193,24 @@ def player_stats(players_name)
       end
     end
   end
+end
+
+def big_shoe_rebounds
+  largest_shoe_size = 0
+  big_shoe_rebounds = 0
+
+  game_hash.each do |team_location, team_info|
+    team_info.each do |attribute, data|
+      if attribute == :players
+        data.each do |player_name, player_stats|
+          if player_stats[:shoe] > largest_shoe_size
+            largest_shoe_size = player_stats[:shoe]
+            big_shoe_rebounds = player_stats[:rebounds]
+          end
+        end
+      end
+    end
+  end
+
+  big_shoe_rebounds
 end
