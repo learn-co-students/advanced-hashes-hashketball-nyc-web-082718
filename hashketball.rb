@@ -157,7 +157,7 @@ end
 
 def team_names
   teams = []
-  
+
   game_hash.each do |location, info|
       teams << info[:team_name]
   end
@@ -179,4 +179,18 @@ def player_numbers(team_name)
   end
 
   player_numbers.sort()
+end
+
+def player_stats(players_name)
+  game_hash.each do |team_location, team_info|
+    team_info.each do |attribute, data|
+      if attribute == :players
+        data.each do |player_name, player_stats|
+          if player_name == players_name
+            return player_stats
+          end
+        end
+      end
+    end
+  end
 end
