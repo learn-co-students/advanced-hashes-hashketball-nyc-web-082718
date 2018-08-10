@@ -125,3 +125,72 @@ def big_shoe_rebounds
 	end
 
 end
+
+
+def most_points_scored
+	mvp = ""
+	mvp_points = 0
+	game_hash.each do |location, team_info|
+		team_info[:players].each do |name, stat|
+			if stat[:points] > mvp_points
+				mvp_points = stat[:points]
+				mvp = name
+			end
+		end
+	end
+
+	game_hash.each do |location, team_info|		
+		if team_info[:players].keys.include? mvp
+			return team_info[:players][mvp][:rebounds]
+		end
+	end
+end
+
+
+def winning_team
+	team_points = {}
+	game_hash.each do |location, team_info|
+		total_points = 0
+		team_info[:players].each do |name, stat|
+			total_points += stat[:points]
+		end
+		team_points[team_info[:team_name]] = total_points
+	end
+	
+	highscore = team_points.values.sort[1]
+	team_points.select {|team, points| points == highscore}.keys.join
+end
+
+
+def player_with_longest_name
+	long_name_player = ""
+	char_count = 0
+	game_hash.each do |location, team_info|
+		team_info[:players].each do |name, stat|
+			if name.length > char_count
+				char_count = name.length
+				long_name_player = name
+			end
+		end
+	end
+	long_name_player
+end
+
+
+def long_name_steals_a_ton?
+	player_with_longest_name
+
+	thief = ""
+	stolen = 0
+	game_hash.each do |location, team_info|
+		team_info[:players].each do |name, stat|
+			if stat[:steals] > stolen
+				stolen = stat[:steals]
+				thief = name
+			end
+		end
+	end
+
+	return thief == player_with_longest_name
+
+end
