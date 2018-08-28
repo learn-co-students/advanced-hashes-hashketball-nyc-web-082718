@@ -196,3 +196,125 @@ def big_shoe_rebounds
   end
   return big_shoe_rebounds
 end
+
+# Another solution option below
+
+# def num_points_scored(name)
+#
+#   #iterate down into each location and then each players
+#   game_hash.each do |location, info|
+#
+#     info[:players].each do |player_name, stats|
+#
+#       if player_name == name
+#
+#         return stats[:points]
+#       end
+#     end
+#   end
+# end
+#
+# def shoe_size(name)
+#
+#   #iterate down into each location and then each players
+#   game_hash.each do |location, info|
+#
+#     info[:players].each do |player_name, stats|
+#
+#       if player_name == name
+#
+#         return stats[:shoe]
+#       end
+#     end
+#   end
+# end
+#
+# def team_colors(team_name)
+#   game_hash.each do |location, info|
+#
+#     if info[:team_name] == team_name
+#
+#       return info[:colors]
+#     end
+#   end
+#
+# end
+#
+# def team_names
+#
+#   teams = []
+#
+#   game_hash.each do |location, info|
+#
+#     teams << info[:team_name]
+#
+#   end
+#
+# return teams
+# end
+#
+# def player_numbers(team_name)
+#
+#   #iterate down into each location and then each players
+#   jerseys = []
+#
+#   game_hash.each do |location, info|
+#
+#       if info[:team_name] == team_name
+#
+#         info[:players].each do |player_name, stats|
+#
+#           jerseys << stats[:number]
+#         end
+#       end
+#     end
+#
+#   return jerseys
+#
+# end
+#
+# def player_stats(player)
+#
+#   game_hash.each do |location, info|
+#
+#     info[:players].each do |player_name, stats|
+#
+#       if player_name == player
+#
+#         return stats
+#       end
+#     end
+#   end
+#
+#
+# end
+#
+# def big_shoe_rebounds
+#
+#   biggest_shoe_size = 0
+#
+#   game_hash.each do |location, info|
+#
+#     info[:players].each do |player_name, stats|
+#
+#       if stats[:shoe] > biggest_shoe_size
+#
+#         biggest_shoe_size = stats[:shoe]
+#       end
+#
+#       if stats[:shoe] == biggest_shoe_size
+#
+#         return stats[:rebounds]
+#
+#       end
+#
+#     end
+#
+#   end
+#
+#
+# end
+#
+#
+#
+#
